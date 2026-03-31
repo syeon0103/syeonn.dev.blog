@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* 기존 스타일 유지 및 추가 */
+    .bread-gif {
+      width: 180px; /* 원하는 크기로 조절하세요 */
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+      /* GIF의 흰색 배경을 투명하게 느끼게 하고 싶다면 (선택사항) */
+      mix-blend-mode: multiply;
+    }
+
+    .placeholder p {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: #c8dfe8; /* 요청하신 색상으로 적용 */
+      font-weight: 500;
+    }
+
+    .placeholder {
+      text-align: center;
+      color: rgba(200, 221, 232, 0.45);
+    }
+    .placeholder p {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    /* 임시 도넛 스피너 */
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 2px solid rgba(240, 220, 120, 0.2);
+      border-top-color: rgba(240, 220, 120, 0.6);
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      animation: spin 1.6s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="placeholder">
+   <!-- <div class="spinner"></div>-->
+    <img src="/animation/butter.png" alt="Bread and Butter Animation" class="bread-gif">
+   <!-- <p>animation coming soon</p>-->
+  </div>
+</body>
+</html>

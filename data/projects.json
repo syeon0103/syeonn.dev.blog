@@ -1,0 +1,38 @@
+[
+  {
+    "id": "vegan-map",
+    "title": "비건 지도",
+    "subtitle": "비건 식당·카페 지도 서비스",
+    "description": "한국 내 비건·베지테리안 식당을 지도로 검색하고 후기를 남길 수 있는 커뮤니티 서비스입니다.",
+    "tags": ["Next.js", "TypeScript", "Kakao Maps API", "Supabase"],
+    "category": "사이드 프로젝트",
+    "status": "진행 중",
+    "github": "https://github.com",
+    "demo": "",
+    "period": "2026.03 ~"
+  },
+  {
+    "id": "senior-welfare",
+    "title": "노인 복지 허브",
+    "subtitle": "노인 복지 정보 통합 서비스",
+    "description": "지역별 복지관·주간보호센터·무료급식소를 지도로 찾고, 복지 정보를 한눈에 볼 수 있는 서비스입니다.",
+    "tags": ["Next.js", "TypeScript", "공공데이터API", "Kakao Maps API"],
+    "category": "사이드 프로젝트",
+    "status": "기획 중",
+    "github": "",
+    "demo": "",
+    "period": "2026.04 ~"
+  },
+  {
+    "id": "bread-butter-blog",
+    "title": "bread & butter blog",
+    "subtitle": "개인 기술 블로그",
+    "description": "Next.js 기반 개인 블로그. 티스토리 RSS 연동으로 글을 자동 업데이트하고, Supabase로 방명록을 운영합니다.",
+    "tags": ["Next.js 15", "TypeScript", "Tailwind CSS", "Supabase", "Vercel"],
+    "category": "개인 프로젝트",
+    "status": "운영 중",
+    "github": "https://github.com",
+    "demo": "https://yourdomain.com",
+    "period": "2026.03 ~"
+  }
+]
