@@ -4,22 +4,43 @@
 
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
-
 :root {
   --font-display: 'Pretendard', sans-serif;
   --font-body:    'Pretendard', sans-serif;
 
+  --bg:     #b8d4e4;
+  --cream:  #1c3244;   /* 연한 파란 배경 위 → 진한 네이비로 대비 확보 */
+  --muted:  #4a7080;   /* 보조 텍스트 */
 
-  --bg:     #b8d4e4;   /* 훨씬 연한 파우더 블루 */
-  --cream:  #e8e4c0;   /* 진한 네이비 → 배경 위에서 선명하게 보임 */
-  --muted:  #4a6a7a;   /* 보조 텍스트도 진하게 */
+  /* 포인트 컬러 */
+  --butter:        #e8c840;   /* 카테고리 칩 배경 */
+  --butter-text:   #3a2800;   /* 버터 칩 위 텍스트 */
+  --butter-accent: #c8a000;   /* 섹션 레이블·링크용 골든 — 큰 글자에 사용 */
+  --butter-dim:    rgba(200,160,0,0.15);  /* 아이콘 배경·장식용 */
 
-  --butter: #f0dc78;
-  --toast:  #d4a96a;
-  --dark:   #5a8fa8;
-  --plate:  #e8e2d0;
-  --glass:  rgba(255,255,255,0.10);
-  --glass-border: rgba(255,255,255,0.18);
+  --glass:        rgba(255,255,255,0.18);
+  --glass-border: rgba(255,255,255,0.30);
+
+  /* 상태 칩 — 배경색과 조화되는 차분한 파스텔 */
+  --status-live:   rgba( 80,160,110,0.22);  /* 운영 중 — 세이지 그린 */
+  --status-live-b: #267a4a;                 /* 보더 */
+  --status-live-t: #0d3a20;
+
+  --status-wip:    rgba( 60,120,180,0.20);  /* 진행 중 — 인디고 블루 */
+  --status-wip-b:  #2a6aac;
+  --status-wip-t:  #0a2848;
+
+  --status-plan:   rgba(180,120, 50,0.20);  /* 기획 중 — 웜 샌드 */
+  --status-plan-b: #9a6a20;
+  --status-plan-t: #3a2000;
+
+  --status-done:   rgba(100,120,130,0.20);  /* 완료    — 뮤트 슬레이트 */
+  --status-done-b: #607880;
+  --status-done-t: #1e3038;
+
+  --status-hold:   rgba(130, 90,170,0.20);  /* 보류    — 소프트 퍼플 */
+  --status-hold-b: #8058b0;
+  --status-hold-t: #2a1040;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,17 +53,137 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* 히어로 헤딩은 배경과 대비되도록 밝게 유지 */
+.hero-heading { color: #e8e4c0 !important; }
+
+/* ── 1920 레이아웃 컨테이너 ── */
+.site-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 4vw, 80px);
+}
+
 /* 네비게이션 */
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+}
+
+.nav-logo {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--butter-accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
 .nav-link {
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-size: 13px;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   color: var(--muted);
   text-decoration: none;
   transition: color 0.2s;
 }
-.nav-link:hover,
-.nav-link.active { color: var(--cream); }
+.nav-link:hover  { color: var(--cream); }
+.nav-link.active { color: var(--butter-accent); }
+
+/* 햄버거 버튼 */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.ham-line {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--cream);
+  border-radius: 2px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+/* 모바일 드롭다운 */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  padding: 12px 32px 20px;
+  border-top: 0.5px solid var(--glass-border);
+  gap: 2px;
+}
+.mobile-menu-link {
+  font-size: 15px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 11px 0;
+  border-bottom: 0.5px solid rgba(255,255,255,0.07);
+  transition: color 0.2s;
+}
+.mobile-menu-link:hover,
+.mobile-menu-link.active { color: var(--cream); }
+
+@media (max-width: 640px) {
+  .nav-bar       { padding: 16px 20px; }
+  .nav-links     { display: none; }
+  .nav-hamburger { display: flex; }
+  .mobile-menu   { display: flex; }
+
+  .site-wrapper  { padding: 0; }
+  .divider       { margin: 0 20px; }
+
+  /* 홈 퀵카드: 3열 → 1열 */
+  .home-cards {
+    grid-template-columns: 1fr !important;
+    padding: 0 20px 24px !important;
+  }
+
+  /* 홈/블로그/hobby 섹션 패딩 */
+  .page-inner {
+    padding: 24px 20px !important;
+  }
+
+  /* hobby 카드: 2열 → 1열 */
+  .hobby-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* hero 텍스트 */
+  .hero-text {
+    padding: 12px 20px 0 !important;
+  }
+
+  /* recent posts 섹션 */
+  .recent-section {
+    padding: 0 20px 20px !important;
+  }
+
+  /* footer */
+  .site-footer {
+    flex-direction: column !important;
+    gap: 24px !important;
+    align-items: flex-start !important;
+    padding: 0 20px 32px !important;
+  }
+  .site-footer-btns {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+  }
+}
 
 /* 유리 카드 */
 .glass-card {
@@ -56,23 +197,38 @@ body {
   transform: translateY(-2px);
 }
 
-/* 버터 뱃지 */
+/* 버터 뱃지 (카테고리 칩) */
 .butter-badge {
   display: inline-block;
-  font-size: 9px;
-  letter-spacing: 0.16em;
+  font-size: 11px;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: #4a3a08;
+  color: var(--butter-text);
   background: var(--butter);
   border-radius: 20px;
-  padding: 3px 10px;
+  padding: 3px 11px;
 }
+
+/* 상태 칩 */
+.status-chip {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  border-radius: 20px;
+  padding: 3px 11px;
+  font-weight: 500;
+  border: 1px solid;
+}
+.status-chip.live  { background: var(--status-live);  border-color: var(--status-live-b);  color: var(--status-live-t);  }
+.status-chip.wip   { background: var(--status-wip);   border-color: var(--status-wip-b);   color: var(--status-wip-t);   }
+.status-chip.plan  { background: var(--status-plan);  border-color: var(--status-plan-b);  color: var(--status-plan-t);  }
+.status-chip.done  { background: var(--status-done);  border-color: var(--status-done-b);  color: var(--status-done-t);  }
+.status-chip.hold  { background: var(--status-hold);  border-color: var(--status-hold-b);  color: var(--status-hold-t);  }
 
 /* 섹션 구분선 */
 .divider {
   height: 0.5px;
   background: rgba(255,255,255,0.13);
-  margin: 0 28px;
 }
 
 /* 아이프레임 애니메이션 슬롯 */
@@ -85,8 +241,8 @@ body {
 
 /* CTA 버튼 */
 .btn-ghost {
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-size: 13px;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   color: var(--cream);
   background: var(--glass);
@@ -96,12 +252,48 @@ body {
   cursor: pointer;
   transition: background 0.2s;
   white-space: nowrap;
+  text-decoration: none;
+  display: inline-block;
 }
 .btn-ghost:hover { background: rgba(255,255,255,0.20); }
 
-.post-item-link:hover {
-  opacity: 0.7;
+.post-item-link:hover { opacity: 0.7; }
+
+/* Notion 글 본문 */
+.notion-body {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--cream);
 }
+.notion-body h1 { font-size: 24px; font-weight: 500; margin: 2em 0 0.5em; color: var(--cream); }
+.notion-body h2 { font-size: 20px; font-weight: 500; margin: 1.8em 0 0.5em; color: var(--cream); }
+.notion-body h3 { font-size: 17px; font-weight: 500; margin: 1.5em 0 0.4em; color: var(--cream); }
+.notion-body p  { margin-bottom: 1em; }
+.notion-body ul, .notion-body ol { padding-left: 1.5em; margin-bottom: 1em; }
+.notion-body li { margin-bottom: 0.3em; }
+.notion-body blockquote {
+  border-left: 2px solid var(--butter-accent);
+  padding-left: 1em;
+  color: var(--muted);
+  margin: 1.5em 0;
+}
+.notion-body code {
+  background: rgba(0,0,0,0.2);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 13px;
+}
+.notion-body pre {
+  background: rgba(0,0,0,0.25);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  margin-bottom: 1em;
+}
+.notion-body pre code { background: none; padding: 0; }
+.notion-body hr { border: none; border-top: 0.5px solid rgba(255,255,255,0.15); margin: 2em 0; }
+.notion-body img { max-width: 100%; border-radius: 8px; margin: 1em 0; }
+.notion-body a { color: var(--butter-accent); text-underline-offset: 3px; }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
