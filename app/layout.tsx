@@ -21,8 +21,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <Nav />
-        <main>{children}</main>
+        <div className="site-wrapper">
+          <Nav />
+          <main>{children}</main>
+        </div>
       </body>
     </html>
   );
