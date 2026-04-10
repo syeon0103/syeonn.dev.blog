@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       background: transparent;
       display: flex;
@@ -14,50 +15,108 @@
       font-family: 'DM Sans', sans-serif;
     }
 
-    /* 기존 스타일 유지 및 추가 */
-    .bread-gif {
-      width: 180px; /* 원하는 크기로 조절하세요 */
-      height: auto;
+    /* ── 씬 컨테이너 ── */
+    .scene {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 420px;
+    }
+
+    /* ── 이미지 래퍼 (float 애니메이션 적용) ── */
+    .icon-wrap {
+      position: relative;
+      width: 420px;
+      animation: floatIcon 3.6s ease-in-out infinite;
+      transform-origin: center bottom;
+      filter: drop-shadow(0 28px 24px rgba(0,0,0,0.22));
+    }
+
+    .icon-wrap img {
+      width: 100%;
       display: block;
-      margin: 0 auto 10px;
-      /* GIF의 흰색 배경을 투명하게 느끼게 하고 싶다면 (선택사항) */
-      mix-blend-mode: multiply;
     }
 
-    .placeholder p {
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      color: #c8dfe8; /* 요청하신 색상으로 적용 */
-      font-weight: 500;
-    }
-
-    .placeholder {
-      text-align: center;
-      color: rgba(200, 221, 232, 0.45);
-    }
-    .placeholder p {
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-    /* 임시 도넛 스피너 */
-    .spinner {
-      width: 48px;
-      height: 48px;
-      border: 2px solid rgba(240, 220, 120, 0.2);
-      border-top-color: rgba(240, 220, 120, 0.6);
+    /* ── 버터 shimmer 오버레이 ── */
+    /* 빵 이미지 위에 반짝이는 빛이 대각선으로 쓸고 지나감 */
+    .butter-shimmer {
+      position: absolute;
+      inset: 0;
       border-radius: 50%;
-      margin: 0 auto 16px;
-      animation: spin 1.6s linear infinite;
+      overflow: hidden;
+      pointer-events: none;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .butter-shimmer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(
+        105deg,
+        transparent 30%,
+        rgba(255, 245, 160, 0.55) 50%,
+        rgba(255, 220, 80, 0.25) 60%,
+        transparent 70%
+      );
+      animation: shimmerSlide 3.6s ease-in-out infinite;
+    }
+
+    /* 두 번째 shimmer: 약간 다른 타이밍으로 잔광 효과 */
+    .butter-shimmer::after {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: -100%;
+      width: 35%;
+      height: 70%;
+      background: linear-gradient(
+        110deg,
+        transparent 20%,
+        rgba(255, 255, 200, 0.3) 50%,
+        transparent 70%
+      );
+      animation: shimmerSlide 3.6s ease-in-out infinite 0.25s;
+    }
+
+    /* ── 그림자 (float에 맞춰 줄었다 커졌다) ── */
+    .shadow {
+      width: 65%;
+      height: 28px;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.28) 0%, transparent 72%);
+      border-radius: 50%;
+      margin-top: -8px;
+      animation: shadowPulse 3.6s ease-in-out infinite;
+    }
+
+    /* ═══════════ KEYFRAMES ═══════════ */
+
+    /* 둥둥 float: 위로 올라가며 살짝 기울어짐 */
+    @keyframes floatIcon {
+      0%   { transform: translateY(0px)   rotate3d(1, 0.3, 0,  0deg)   scale(1);      }
+      25%  { transform: translateY(-14px) rotate3d(1, 0.3, 0,  2.5deg) scale(1.01);   }
+      50%  { transform: translateY(-22px) rotate3d(1, 0.3, 0,  0deg)   scale(1.015);  }
+      75%  { transform: translateY(-14px) rotate3d(1, 0.3, 0, -2.5deg) scale(1.01);   }
+      100% { transform: translateY(0px)   rotate3d(1, 0.3, 0,  0deg)   scale(1);      }
+    }
+
+    /* 그림자: 이미지가 올라갈수록 작고 희미해짐 */
+    @keyframes shadowPulse {
+      0%   { transform: scale(1);    opacity: 1;   }
+      50%  { transform: scale(0.62); opacity: 0.4; }
+      100% { transform: scale(1);    opacity: 1;   }
+    }
   </style>
 </head>
 <body>
-  <div class="placeholder">
-   <!-- <div class="spinner"></div>-->
-    <img src="/animation/butter.png" alt="Bread and Butter Animation" class="bread-gif">
-   <!-- <p>animation coming soon</p>-->
+  <div class="scene">
+    <div class="icon-wrap">
+      <img src="/animation/butter.png" alt="bread and butter">
+    </div>
+    <div class="shadow"></div>
   </div>
 </body>
 </html>

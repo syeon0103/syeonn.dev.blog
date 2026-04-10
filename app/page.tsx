@@ -41,9 +41,9 @@ export default async function HomePage() {
         style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "10px", padding: "0 28px 24px", alignItems: "stretch" }}
       >
         {[
-          { tag: "오늘의 빵입니다", name: "기술 블로그", desc: "매일 새로 구운 글들.\n기술, 회고, 공부 기록.", href: "/blog",     icon: <BreadIcon size={16} /> },
-          { tag: "버터 레시피",     name: "프로젝트",   desc: "기술로 빚어낸 결과물들.",         href: "/projects", icon: <LockIcon  size={16} /> },
-          { tag: "잼 & 토핑",       name: "취미 / 일상", desc: "영화, 책, 그리고 소소한 것들.",  href: "/hobby",    icon: <LeafIcon  size={16} /> },
+          { tag: "오늘의 빵", name: "기술", desc: "기술/공부/회고", href: "/blog",     icon: <BreadIcon size={16} /> },
+          { tag: "버터",     name: "프로젝트",   desc: "프로젝트 모음",         href: "/projects", icon: <LockIcon  size={16} /> },
+          { tag: "잼 & 토핑",       name: "취미 / 일상", desc: "영화, 책, 그리고 취미",  href: "/hobby",    icon: <LeafIcon  size={16} /> },
         ].map((c) => (
           <Link key={c.href} href={c.href} style={{ textDecoration: "none", display: "flex" }}>
             <div className="glass-card" style={{ padding: "20px", display: "flex", flexDirection: "column", width: "100%" }}>
@@ -117,7 +117,7 @@ export default async function HomePage() {
         </p>
         <div className="site-footer-btns" style={{ display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-end" }}>
           <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="btn-ghost">GitHub ↗</a>
-          <a href="mailto:your@email.com" className="btn-ghost">Email ↗</a>
+          <a href="mailto:opop9817@gmail.com" className="btn-ghost">Email ↗</a>
         </div>
       </footer>
 
