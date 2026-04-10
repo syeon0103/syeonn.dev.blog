@@ -3,6 +3,7 @@ import { NotionToMarkdown } from "notion-to-md";
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
+  fetch: (url, init) => fetch(url, { ...init, cache: "no-store" }),
 });
 
 const n2m = new NotionToMarkdown({ notionClient: notion });

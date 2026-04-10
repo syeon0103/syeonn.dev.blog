@@ -2,6 +2,8 @@ import Link from "next/link";
 import { getNotionPosts } from "@/lib/notion";
 import { BreadIcon, LockIcon, LeafIcon } from "@/components/ui/CategoryIcons";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const posts = await getNotionPosts();
   const recent = posts.slice(0, 5);

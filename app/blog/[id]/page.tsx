@@ -2,10 +2,7 @@ import { getNotionPosts, getNotionPageMarkdown } from "@/lib/notion";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 
-export async function generateStaticParams() {
-  const posts = await getNotionPosts();
-  return posts.map((p) => ({ id: p.id }));
-}
+export const dynamic = "force-dynamic";
 
 export default async function PostPage({
   params,
