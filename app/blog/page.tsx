@@ -5,9 +5,10 @@ const TABS = ["전체", "개발", "회고", "공부"];
 export default async function BlogPage({
   searchParams,
 }: {
-  searchParams: { cat?: string };
+  searchParams: Promise<{ cat?: string }>;
 }) {
-  const cat   = searchParams.cat ?? "전체";
+  const { cat: catParam } = await searchParams;
+  const cat = catParam ?? "전체";
   const posts = await getBlogPosts();
 
   const filtered =

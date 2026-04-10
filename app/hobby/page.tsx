@@ -5,9 +5,10 @@ const HOBBY_TABS = ["전체", "영화", "독서", "일상"];
 export default async function HobbyPage({
   searchParams,
 }: {
-  searchParams: { cat?: string };
+  searchParams: Promise<{ cat?: string }>;
 }) {
-  const cat   = searchParams.cat ?? "전체";
+  const { cat: catParam } = await searchParams;
+  const cat = catParam ?? "전체";
   const posts = await getHobbyPosts();
 
   const filtered =

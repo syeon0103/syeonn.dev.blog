@@ -10,14 +10,15 @@ export async function generateStaticParams() {
 export default async function PostPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
   const [posts, markdown] = await Promise.all([
     getNotionPosts(),
-    getNotionPageMarkdown(params.id),
+    getNotionPageMarkdown(id),
   ]);
 
-  const post = posts.find((p) => p.id === params.id);
+  const post = posts.find((p) => p.id === id);
 
   return (
     <div style={{ padding: "32px 28px", maxWidth: "720px", margin: "0 auto" }}>
