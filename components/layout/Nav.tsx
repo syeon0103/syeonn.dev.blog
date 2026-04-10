@@ -22,7 +22,7 @@ export default function Nav() {
     <>
       <nav className="nav-bar">
         <Link href="/" className="nav-logo">
-          bread &amp; butter
+          syeuon.dev.blog
         </Link>
 
         {/* 데스크탑 링크 */}

@@ -3,12 +3,12 @@ import "./globals.css";
 import Nav from "@/components/layout/Nav";
 
 export const metadata: Metadata = {
-  title: "bread & butter — dev blog",
+  title: "suyeon-dev.blog",
   description:
     "plain bread is already enough. but a little butter makes it perfect.",
   openGraph: {
-    title: "bread & butter",
-    description: "개발, 프로젝트, 취미를 버터처럼 바르는 블로그",
+    title: "suyeon.dev.blog",
+    description: "나라는 빵 위에 버터와 잼을 발라요",
     type: "website",
   },
 };

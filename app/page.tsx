@@ -14,15 +14,17 @@ export default async function HomePage() {
       {/* ── HERO TEXT ── */}
       <div className="fade-up fade-up-1 hero-text" style={{ textAlign: "center", padding: "12px 32px 0" }}>
         <p style={{ fontSize: "12px", letterSpacing: "0.2em", color: "var(--butter-accent)", textTransform: "uppercase", marginBottom: "8px" }}>
-          the best moment ever with
+          the best moment ever with suyeon
         </p>
-        <h1 className="hero-heading" style={{ fontSize: "clamp(48px, 12vw, 88px)", fontFamily: "var(--font-display)", fontWeight: 400, letterSpacing: "-2px", lineHeight: 1, marginBottom: "14px" }}>
+      {/*  <h1 className="hero-heading" style={{ fontSize: "clamp(48px, 12vw, 88px)", fontFamily: "var(--font-display)", fontWeight: 400, letterSpacing: "-2px", lineHeight: 1, marginBottom: "14px" }}>
           BREAD
-        </h1>
-        <p style={{ fontSize: "13px", color: "var(--muted)", letterSpacing: "0.08em", textTransform: "uppercase", lineHeight: 2 }}>
           plain bread is already enough
+              but a little butter makes it perfect
+        </h1>*/}
+        <p style={{ fontSize: "13px", color: "var(--muted)", letterSpacing: "0.08em", textTransform: "uppercase", lineHeight: 2 }}>
+            Full-stack developer
           <br />
-          but a little butter makes it perfect
+
         </p>
       </div>
 
@@ -43,9 +45,9 @@ export default async function HomePage() {
         style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "10px", padding: "0 28px 24px", alignItems: "stretch" }}
       >
         {[
-          { tag: "오늘의 빵", name: "기술", desc: "기술/공부/회고", href: "/blog",     icon: <BreadIcon size={16} /> },
-          { tag: "버터",     name: "프로젝트",   desc: "프로젝트 모음",         href: "/projects", icon: <LockIcon  size={16} /> },
-          { tag: "잼 & 토핑",       name: "취미 / 일상", desc: "영화, 책, 그리고 취미",  href: "/hobby",    icon: <LeafIcon  size={16} /> },
+          { tag: "오늘의 빵", name: "기술/회고/공부", desc: "빵을 구워요", href: "/blog",     icon: <BreadIcon size={16} /> },
+          { tag: "버터",     name: "프로젝트",   desc: "그 위에 버터를 발라요",         href: "/projects", icon: <LockIcon  size={16} /> },
+          { tag: "잼 & 토핑",       name: "취미&일상", desc: "좋아하는 잼과 토핑을 얹어요!",  href: "/hobby",    icon: <LeafIcon  size={16} /> },
         ].map((c) => (
           <Link key={c.href} href={c.href} style={{ textDecoration: "none", display: "flex" }}>
             <div className="glass-card" style={{ padding: "20px", display: "flex", flexDirection: "column", width: "100%" }}>
@@ -110,12 +112,8 @@ export default async function HomePage() {
 
       {/* ── FOOTER ── */}
       <footer className="site-footer" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", padding: "0 28px 32px" }}>
-        <p style={{ fontSize: "13px", color: "var(--muted)", lineHeight: 1.9, letterSpacing: "0.03em" }}>
-          당신은 이미 충분한 사람입니다.
-          <br />
-          이 블로그가 그 위에 바르는
-          <br />
-          버터 한 조각이 되길 바랍니다.
+        <p style={{ fontSize: "10px", color: "var(--muted)", lineHeight: 1.9, letterSpacing: "0.03em" }}>
+            Copyright © 2026 Suyeon
         </p>
         <div className="site-footer-btns" style={{ display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-end" }}>
           <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="btn-ghost">GitHub ↗</a>
